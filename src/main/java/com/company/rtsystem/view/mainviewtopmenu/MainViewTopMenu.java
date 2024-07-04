@@ -6,7 +6,9 @@ import com.company.rtsystem.service.banner.BannerService;
 import com.company.rtsystem.ui.banner.BannerManager;
 import com.company.rtsystem.view.main.MainView;
 
+import com.google.common.base.Strings;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
@@ -14,12 +16,14 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.core.session.SessionData;
 import io.jmix.flowui.app.main.StandardMainView;
+import io.jmix.flowui.component.UiComponentUtils;
 import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -83,6 +87,57 @@ public class MainViewTopMenu extends StandardMainView {
 
         Div footerButtonsDiv = createFooterButtons();
         footerLayout.add(footerButtonsDiv);
+    }
+    @Override
+    protected void updateTitle() {
+        super.updateTitle();
+        String viewTitle = getTitleFromOpenedView();
+        UiComponentUtils.findComponent(getContent(), "viewHeaderBox").ifPresent(component -> component.setVisible(!Strings.isNullOrEmpty(viewTitle)));
+    }
+
+    @Override
+    public void setInitialLayout(@Nullable Component initialLayout) {
+        this.initialLayout = initialLayout;
+
+        if (getContent().getContent() == null
+                && initialLayout != null) {
+            setContentWrapperContent(initialLayout);
+            getContent().setContent(contentWrapper);
+        }
+    }
+    @Nullable
+    @Override
+    public Component getInitialLayout() {
+        return initialLayout;
+    }
+
+    private void setContentWrapperContent(@Nullable Component contentToDisplay) {
+        contentWrapper.removeAll();
+        if (contentToDisplay != null) {
+            contentToDisplay.getStyle()
+                    .setOverflow(Style.Overflow.AUTO)
+                    .setFlexGrow("1");
+            contentWrapper.add(contentToDisplay);
+        }
+        contentWrapper.add(footerLayout);
+    }
+
+    private Component contentToComponent(HasElement content) {
+        return content.getElement().getComponent().orElseThrow(() ->
+                new IllegalArgumentException("Content must be a Component"));
+    }
+    @Override
+    protected String getTitleFromOpenedView() {
+        return ViewControllerUtils.getPageTitle(contentWrapper.getComponentAt(0));
+    }
+    @Override
+    public void showRouterLayoutContent(@Nullable HasElement content) {
+        Component contentToDisplay = content != null
+                ? contentToComponent(content)
+                : getInitialLayout();
+
+        setContentWrapperContent(contentToDisplay);
+        super.showRouterLayoutContent(contentWrapper);
     }
 
     private Div createFooterButtons() {
