@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu icon="vaadin:align-justify" id="topMenu" title=" ">
+        <item view="User.list" title="msg://com.company.rtsystem.view.user/UserListView.title"/>
+        <menu id="security" title="msg://com.company.rtsystem/menu.security.title">
+            <item view="sec_ResourceRoleModel.list"
+                  title="msg://io.jmix.securityflowui.view.resourcerole/resourceRoleModelListView.menu"/>
+            <item view="sec_RowLevelRoleModel.list"
+                  title="msg://io.jmix.securityflowui.view.rowlevelrole/rowLevelRoleModelListView.menu"/>
+        </menu>
+    </menu>
+
+</menu-config>

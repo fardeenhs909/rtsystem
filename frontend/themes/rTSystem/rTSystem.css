@@ -1,0 +1,198 @@
+/* Define your styles here */
+/* Define your styles here */
+.span-with-break {
+    display: inline;
+}
+
+.span-with-break::after {
+    content: '\A';
+    white-space: pre;
+}
+
+/* Warning Banner */
+.banner-warning {
+    position: absolute; /* position the items absolutely within the parent div */
+    top: 0; /* align all items to the top of the parent div */
+    left: 0; /* align all items to the left of the parent div */
+    width: 80%;
+    padding: var(--lumo-space-m);
+    background-color: var(--lumo-error-color);
+    color: var(--lumo-base-color);
+    border: 1px solid var(--lumo-error-color-50pct);
+    text-align: center;
+}
+
+/* Information Banner */
+.banner-info {
+    position: absolute; /* position the items absolutely within the parent div */
+    top: 0; /* align all items to the top of the parent div */
+    left: 0; /* align all items to the left of the parent div */
+    width: 80%;
+    padding: var(--lumo-space-m);
+    background-color: var(--lumo-primary-color);
+    color: var(--lumo-base-color);
+    border: 1px solid var(--lumo-primary-color-50pct);
+    text-align: center;
+}
+
+/* Banner Container */
+.banner-container {
+    position: relative;
+    justify-content: space-between; /* Align children (banner and button) along the horizontal line */
+    width: 100%; /* Take the full width */
+}
+
+.banner-div {
+    height: 3em;
+}
+/* Dismiss Button */
+.dismiss-banner-btn {
+    align-self: center; /* Align self in the center of cross axis (vertically in this case) */
+    margin-left: var(--lumo-space-m); /* Some space between button and the banner */
+    /* More properties like padding, background color, cursor etc. could be added here based on your design requirements */
+    position: absolute; /* Set Positioning Context */
+    top: 0; /* Set position from the top */
+    right: 0; /* Set position from the right */
+}
+
+.location-card {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #ffffff; /* white background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* fixed width of 200px */
+    max-width: 1000px;
+}
+
+.theme-picture {
+    object-fit: contain;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.theme-logo-icon {
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    object-position: left;
+    object-fit: cover; /* Ensures the image covers the full area of the element, may crop a bit */
+    display: inline-block; /* Ensures additional margin/padding doesn't get added around the image */
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* If there's not enough space, move cards to the next row */
+    justify-content: space-around; /* Distribute cards evenly */
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card h1 {
+    font-size: 48px;
+}
+
+vaadin-details {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.align-center {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+.pad-top-and-bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pad-top-and-bottom-sm {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-card {
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    padding: 20px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+
+.header-native-label {
+    color: #505050; /* Change the text color */
+    font-size: 1.2em; /* Increase the font size */
+    font-weight: bold; /* Make the font bolder */
+    margin-bottom: 10px; /* Add some margin at the bottom */
+    border-bottom: 2px solid #505050; /* underline with a solid line */
+    display: inline-block; /* to make border line fit text*/
+}
+
+.pad-left-and-right {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#footer{
+    border-bottom-color: #002f6d;
+    border-bottom: #002f6d;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+.label-and-input-group {
+    display: flex;
+    align-items: center;
+}
+vaadin-button.bottom-right-button {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0272CF;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 10px;
+    background: white;
+}
+
+.jmix-search-field {
+    min-width: 300px;
+}
+
+#navigation {
+    padding: 0;
+    gap: 0;
+    width: 100%;
+    --lumo-border-radius-m: var(--lumo-border-radius, 0);
+}
+
+.main-view-content-wrapper {
+
+}
+
+.ppm--main-view-content-wrapper-inner {
+    /* This overrides an inline style of the first child div of the .main-view-content-wrapper */
+    /* The UI fix for removing the horizontal scrollbar */
+    /* TODO: @Marko, please feel free to undo this as appropriate */
+    /* overflow: hidden !important; */
+}
+
+.theme-logo {
+    object-fit: contain;
+}
