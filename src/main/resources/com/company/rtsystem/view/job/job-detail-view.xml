@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://jobDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="jobDc"
+                  class="com.company.rtsystem.entity.Job">
+            <fetchPlan extends="_base">
+                <property name="skills" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="skillsDc" property="skills"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="jobDc">
+            <textField id="titleField" property="title"/>
+            <textArea id="descField" height="9.5em" property="desc"/>
+        </formLayout>
+        <dataGrid id="skillsDataGrid" dataContainer="skillsDc" width="100%" minHeight="20em">
+            <columns>
+                <column property="name"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
