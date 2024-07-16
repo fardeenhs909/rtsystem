@@ -5,6 +5,7 @@ import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDelete;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -18,7 +19,9 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "JOB")
+@Table(name = "JOB", indexes = {
+        @Index(name = "IDX_JOB_APPLICATION_DESK", columnList = "APPLICATION_DESK_ID")
+})
 @Entity
 public class Job {
     @JmixGeneratedValue
@@ -59,6 +62,18 @@ public class Job {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "APPLICATION_DESK_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private ApplicationDesk applicationDesk;
+
+    public ApplicationDesk getApplicationDesk() {
+        return applicationDesk;
+    }
+
+    public void setApplicationDesk(ApplicationDesk applicationDesk) {
+        this.applicationDesk = applicationDesk;
+    }
 
     public List<Skill> getSkills() {
         return skills;

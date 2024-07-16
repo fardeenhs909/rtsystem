@@ -26,6 +26,8 @@
             <item view="bpm_DecisionTableModelerView"
                   title="msg://io.jmix.bpmflowui.view.decisiontablemodeler/bpm_DecisionTableModelerView.title"/>
         </menu>
+        <item view="ApplicationDesk.list"
+              title="msg://com.company.rtsystem.view.applicationdesk/applicationDeskListView.title"/>
     </menu>
 
 </menu-config>
