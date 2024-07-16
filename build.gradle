@@ -18,6 +18,16 @@ repositories {
     maven {
         url 'https://global.repo.jmix.io/repository/public'
     }
+    maven {
+        url 'https://maven.vaadin.com/vaadin-addons'
+    }
+    maven {
+        url = 'https://global.repo.jmix.io/repository/premium'
+        credentials {
+            username = rootProject['premiumRepoUser']
+            password = rootProject['premiumRepoPass']
+        }
+    }
 }
 
 dependencies {
@@ -34,6 +44,9 @@ dependencies {
     implementation 'io.jmix.datatools:jmix-datatools-flowui-starter'
     implementation 'org.postgresql:postgresql'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'io.jmix.bpm:jmix-bpm-starter'
+    implementation 'io.jmix.bpm:jmix-bpm-flowui-starter'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 

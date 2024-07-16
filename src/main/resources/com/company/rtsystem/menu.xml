@@ -11,6 +11,21 @@
         </menu>
         <item view="Job.list" title="msg://com.company.rtsystem.view.job/jobListView.title"/>
         <item view="Skill.list" title="msg://com.company.rtsystem.view.skill/skillListView.title"/>
+        <menu id="bpm" title="msg://io.jmix.bpmflowui/menu.bpm.title">
+            <item view="bpm_StartProcess" title="msg://io.jmix.bpmflowui/startProcess.title"/>
+            <item view="bpm_MyTasksList" title="msg://io.jmix.bpmflowui.view.mytasks/myTasksList.title"/>
+            <item view="bpm_BpmnModelerView" title="msg://io.jmix.bpmflowui.view.modeler/bpmnModelerView.title"/>
+            <item view="bpm_ProcessDefinition.list"
+                  title="msg://io.jmix.bpmflowui.view.processdefinition/processDefinitionList.title"/>
+            <item view="bpm_ProcessInstance.list"
+                  title="msg://io.jmix.bpmflowui.view.processinstance/processInstanceList.title"/>
+            <item view="bpm_UserGroup.list" title="msg://io.jmix.bpmflowui.view.usergroup/userGroupList.title"/>
+            <item view="bpm_AllTasksView" title="msg://io.jmix.bpmflowui.view.alltasks/allTasksView.title"/>
+            <item view="bpm_DmnDecisionTableListView"
+                  title="msg://io.jmix.bpmflowui.view.dmndecisiontable/decisionTable.title"/>
+            <item view="bpm_DecisionTableModelerView"
+                  title="msg://io.jmix.bpmflowui.view.decisiontablemodeler/bpm_DecisionTableModelerView.title"/>
+        </menu>
     </menu>
 
 </menu-config>
