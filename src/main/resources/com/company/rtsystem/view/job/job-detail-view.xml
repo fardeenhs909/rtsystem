@@ -6,11 +6,18 @@
         <instance id="jobDc"
                   class="com.company.rtsystem.entity.Job">
             <fetchPlan extends="_base">
-                <property name="skills" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
-            <collection id="skillsDc" property="skills"/>
+<!--            <collection id="skillsDc" property="skills"/>-->
         </instance>
+        <collection id="skillsDc" class="com.company.rtsystem.entity.Skill">
+            <loader id="skillDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from Skill e]]>
+                </query>
+            </loader>
+            <fetchPlan extends="_base"/>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -23,12 +30,14 @@
         <formLayout id="form" dataContainer="jobDc">
             <textField id="titleField" property="title"/>
             <textArea id="descField" height="9.5em" property="desc"/>
+            <multiSelectComboBox id="skillsDataGrid" itemsContainer="skillsDc"
+                            property="skills"/>
         </formLayout>
-        <dataGrid id="skillsDataGrid" dataContainer="skillsDc" width="100%" minHeight="20em">
-            <columns>
-                <column property="name"/>
-            </columns>
-        </dataGrid>
+<!--        <dataGrid id="skillsDataGrid" dataContainer="skillsDc" width="100%" minHeight="20em">-->
+<!--            <columns>-->
+<!--                <column property="name"/>-->
+<!--            </columns>-->
+<!--        </dataGrid>-->
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

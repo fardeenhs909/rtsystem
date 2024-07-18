@@ -12,11 +12,12 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "APPLICATION_DESK")
+@Table(name = "APPLICATION_DESK", indexes = {
+        @Index(name = "IDX_APPLICATION_DESK_APPLICATION", columnList = "APPLICATION_ID")
+})
 @Entity
 public class ApplicationDesk {
     @JmixGeneratedValue
@@ -24,10 +25,11 @@ public class ApplicationDesk {
     @Id
     private UUID id;
 
+    @JoinColumn(name = "APPLICATION_ID")
+    @OneToOne(fetch = FetchType.LAZY)
     @OnDelete(DeletePolicy.CASCADE)
     @Composition
-    @OneToMany(mappedBy = "applicationDesk")
-    private List<Job> application;
+    private Job application;
 
     @DeletedBy
     @Column(name = "DELETED_BY")
@@ -45,12 +47,12 @@ public class ApplicationDesk {
     @Column(name = "LAST_MODIFIED_DATE")
     private OffsetDateTime lastModifiedDate;
 
-    public List<Job> getApplication() {
-        return application;
+    public void setApplication(Job application) {
+        this.application = application;
     }
 
-    public void setApplication(List<Job> application) {
-        this.application = application;
+    public Job getApplication() {
+        return application;
     }
 
     public OffsetDateTime getLastModifiedDate() {

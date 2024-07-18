@@ -62,9 +62,10 @@ public class Job {
     @DeletedDate
     @Column(name = "DELETED_DATE")
     private OffsetDateTime deletedDate;
+
     @OnDeleteInverse(DeletePolicy.CASCADE)
-    @JoinColumn(name = "APPLICATION_DESK_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "APPLICATION_DESK_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private ApplicationDesk applicationDesk;
 
     public ApplicationDesk getApplicationDesk() {

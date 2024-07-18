@@ -19,7 +19,6 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
-<!--            <genericFilter component="genericFilter"/>-->
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
@@ -28,10 +27,6 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-<!--        <genericFilter id="genericFilter"-->
-<!--                       dataLoader="jobsDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </genericFilter>-->
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createBtn" action="jobsDataGrid.create"/>
             <button id="editBtn" action="jobsDataGrid.edit"/>
@@ -51,6 +46,7 @@
             <columns resizable="true">
                 <column property="title"/>
                 <column property="desc"/>
+                <column property="skills"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

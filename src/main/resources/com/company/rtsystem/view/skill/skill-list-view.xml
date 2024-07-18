@@ -17,7 +17,7 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
-            <genericFilter component="genericFilter"/>
+<!--            <genericFilter component="genericFilter"/>-->
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
@@ -26,10 +26,10 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-        <genericFilter id="genericFilter"
-                       dataLoader="skillsDl">
-            <properties include=".*"/>
-        </genericFilter>
+<!--        <genericFilter id="genericFilter"-->
+<!--                       dataLoader="skillsDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </genericFilter>-->
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createBtn" action="skillsDataGrid.create"/>
             <button id="editBtn" action="skillsDataGrid.edit"/>

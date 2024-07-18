@@ -7,12 +7,19 @@
                   class="com.company.rtsystem.entity.ApplicationDesk">
             <fetchPlan extends="_base">
                 <property name="application" fetchPlan="_base">
-                    <property name="skills" fetchPlan="_base"/>
                 </property>
             </fetchPlan>
             <loader/>
-            <collection id="applicationDc" property="application"/>
+<!--            <collection id="applicationDc" property="application"/>-->
         </instance>
+        <collection id="applicationDc" class="com.company.rtsystem.entity.Job">
+            <loader id="applicationDl" readOnly="true">
+                <query>
+                    <![CDATA[select j from Job j]]>
+                </query>
+            </loader>
+            <fetchPlan extends="_base"/>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -23,13 +30,15 @@
     </actions>
     <layout>
         <formLayout id="form" dataContainer="applicationDeskDc">
+            <entityComboBox itemsContainer="applicationDc" id="applicationDataGrid"
+                            property="application"/>
         </formLayout>
-        <dataGrid id="applicationDataGrid" dataContainer="applicationDc" width="100%" minHeight="20em">
-            <columns>
-                <column property="title"/>
-                <column property="desc"/>
-            </columns>
-        </dataGrid>
+<!--        <dataGrid id="applicationDataGrid" dataContainer="applicationDc" width="100%" minHeight="20em">-->
+<!--            <columns>-->
+<!--                <column property="title"/>-->
+<!--                <column property="desc"/>-->
+<!--            </columns>-->
+<!--        </dataGrid>-->
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>
