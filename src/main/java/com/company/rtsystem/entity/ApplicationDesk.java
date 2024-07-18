@@ -6,8 +6,10 @@ import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.Composition;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -24,6 +26,15 @@ public class ApplicationDesk {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @InstanceName
+    @Column(name = "FIRST_NAME", nullable = false)
+    @NotNull
+    private String firstName;
+
+    @Column(name = "LAST_NAME", nullable = false)
+    @NotNull
+    private String lastName;
 
     @JoinColumn(name = "APPLICATION_ID")
     @OneToOne(fetch = FetchType.LAZY)
@@ -46,6 +57,22 @@ public class ApplicationDesk {
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_DATE")
     private OffsetDateTime lastModifiedDate;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public void setApplication(Job application) {
         this.application = application;

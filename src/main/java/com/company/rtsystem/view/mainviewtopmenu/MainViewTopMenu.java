@@ -2,14 +2,10 @@ package com.company.rtsystem.view.mainviewtopmenu;
 
 
 import com.company.rtsystem.service.UserRoleService;
-import com.company.rtsystem.service.banner.BannerService;
-import com.company.rtsystem.ui.banner.BannerManager;
-import com.company.rtsystem.view.main.MainView;
 
 import com.google.common.base.Strings;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
-import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -45,7 +41,6 @@ public class MainViewTopMenu extends StandardMainView {
     private HorizontalLayout footerLayout;
     private Div footerSpacer;
     private Component initialLayout;
-    private BannerManager bannerManager;
     @Autowired
     private SessionData sessionData;
     @ViewComponent
@@ -185,7 +180,6 @@ public class MainViewTopMenu extends StandardMainView {
     @Subscribe
     public void onBeforeShow(final BeforeShowEvent event) {
         greetingH1.setText("Welcome, " + currentAuthentication.getUser().getUsername());
-//        bannerManager.show(banner, bannerHBox, sessionData);
         footerSpacer.setText("Powered by Program Pathways Mapper v 2.0.");
     }
 

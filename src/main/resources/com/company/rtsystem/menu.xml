@@ -28,6 +28,8 @@
         </menu>
         <item view="ApplicationDesk.list"
               title="msg://com.company.rtsystem.view.applicationdesk/applicationDeskListView.title"/>
+        <item view="referenceTable.list"
+              title="msg://com.company.rtsystem.view.referencetable/referenceTableListView.title"/>
     </menu>
 
 </menu-config>

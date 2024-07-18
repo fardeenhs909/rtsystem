@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://referenceTableListView.title"
+      focusComponent="referenceTablesDataGrid">
+    <data>
+        <collection id="referenceTablesDc"
+                    class="com.company.rtsystem.entity.ReferenceTable">
+            <fetchPlan extends="_base"/>
+            <loader id="referenceTablesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from referenceTable e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="referenceTableDc"
+                  class="com.company.rtsystem.entity.ReferenceTable">
+            <fetchPlan extends="_base">
+                <property name="values" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="referenceTableDl"/>
+        </instance>
+        <collection id="referenceValuesDc" class="com.company.rtsystem.entity.ReferenceValue">
+            <loader id="referenceValuesDl">
+                <query>
+                    <![CDATA[select e from ReferenceValue e where e.referenceTable = :referenceTable]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+<!--            <genericFilter component="genericFilter"/>-->
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout padding="false">
+        <formLayout classNames="master-detail-layout" height="100%">
+            <vbox id="listLayout" height="100%">
+<!--                <genericFilter id="genericFilter"-->
+<!--                               dataLoader="referenceTablesDl">-->
+<!--                    <properties include=".*"/>-->
+<!--                </genericFilter>-->
+                <hbox id="buttonsPanel" classNames="buttons-panel">
+                    <button id="createBtn" action="referenceTablesDataGrid.create"/>
+                    <button id="editBtn" action="referenceTablesDataGrid.edit"/>
+                    <button id="removeBtn" action="referenceTablesDataGrid.remove"/>
+                    <simplePagination id="pagination" dataLoader="referenceTablesDl"/>
+                </hbox>
+                <dataGrid id="referenceTablesDataGrid"
+                          width="100%"
+                          minHeight="20em"
+                          dataContainer="referenceTablesDc"
+                          columnReorderingAllowed="true">
+                    <actions>
+                        <action id="create" type="list_create"/>
+                        <action id="edit" type="list_edit"/>
+                        <action id="remove" type="list_remove"/>
+                    </actions>
+                    <columns resizable="true">
+                        <column property="tableName"/>
+                        <column property="displayName"/>
+                    </columns>
+                </dataGrid>
+                <hbox id="lookupActions" visible="false">
+                    <button id="selectBtn" action="selectAction"/>
+                    <button id="discardBtn" action="discardAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="detailsLayout" height="100%">
+                <formLayout id="form" dataContainer="referenceTableDc">
+                    <textField id="tableNameField" property="tableName"/>
+                    <textField id="displayNameField" property="displayName"/>
+                </formLayout>
+                <hbox id="refValueButtonsPanel" classNames="buttons-panel">
+                    <button id="refValueCreateBtn" text="Create" enabled="false" />
+                    <button id="refValueRemoveBtn" action="refValuesDataGrid.remove"/>
+                    <simplePagination id="refValuePagination" dataLoader="referenceValuesDl"/>
+                </hbox>
+                <dataGrid dataContainer="referenceValuesDc" id="refValuesDataGrid">
+                    <actions>
+                        <action id="remove" type="list_remove"/>
+                    </actions>
+                    <columns>
+                        <column property="display" header="Name" />
+                        <column property="code" />
+                        <column property="order" />
+                        <column property="startDate"/>
+                        <column property="endDate"/>
+                    </columns>
+                </dataGrid>
+                <hbox id="detailActions">
+                    <button id="saveBtn" text="msg:///actions.Save" icon="CHECK" themeNames="primary"/>
+                    <button id="cancelBtn" text="msg:///actions.Cancel" icon="BAN"/>
+                </hbox>
+            </vbox>
+        </formLayout>
+    </layout>
+</view>
