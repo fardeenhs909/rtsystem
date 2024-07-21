@@ -17,7 +17,7 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
-<!--            <genericFilter component="genericFilter"/>-->
+            <!--            <genericFilter component="genericFilter"/>-->
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
@@ -26,10 +26,10 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-<!--        <genericFilter id="genericFilter"-->
-<!--                       dataLoader="applicationDesksDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </genericFilter>-->
+        <!--        <genericFilter id="genericFilter"-->
+        <!--                       dataLoader="applicationDesksDl">-->
+        <!--            <properties include=".*"/>-->
+        <!--        </genericFilter>-->
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createBtn" action="applicationDesksDataGrid.create"/>
             <button id="editBtn" action="applicationDesksDataGrid.edit"/>
@@ -47,6 +47,8 @@
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
+                <column property="firstName"/>
+                <column property="lastName"/>
                 <column property="application"/>
             </columns>
         </dataGrid>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="rTSystem">
+        <addColumn tableName="APPLICATION_DESK">
+            <column name="EXPERIENCE_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="rTSystem">
+        <createIndex indexName="IDX_APPLICATION_DESK_EXPERINCE" tableName="APPLICATION_DESK">
+            <column name="EXPERIENCE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="EXPERIENCE_ID" baseTableName="APPLICATION_DESK"
+                                 constraintName="FK_APPLICATION_DESK_ON_EXPERIENCE" referencedColumnNames="ID"
+                                 referencedTableName="REFERENCE_VALUE"/>
+    </changeSet>
+</databaseChangeLog>

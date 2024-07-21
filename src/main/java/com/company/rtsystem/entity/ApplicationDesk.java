@@ -18,7 +18,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "APPLICATION_DESK", indexes = {
-        @Index(name = "IDX_APPLICATION_DESK_APPLICATION", columnList = "APPLICATION_ID")
+        @Index(name = "IDX_APPLICATION_DESK_APPLICATION", columnList = "APPLICATION_ID"),
+        @Index(name = "IDX_APPLICATION_DESK_EXPERINCE", columnList = "EXPERIENCE_ID")
 })
 @Entity
 public class ApplicationDesk {
@@ -32,9 +33,12 @@ public class ApplicationDesk {
     @NotNull
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false)
-    @NotNull
+    @Column(name = "LAST_NAME")
     private String lastName;
+
+    @JoinColumn(name = "EXPERIENCE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ReferenceValue experience;
 
     @JoinColumn(name = "APPLICATION_ID")
     @OneToOne(fetch = FetchType.LAZY)
@@ -57,6 +61,14 @@ public class ApplicationDesk {
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_DATE")
     private OffsetDateTime lastModifiedDate;
+
+    public ReferenceValue getExperience() {
+        return experience;
+    }
+
+    public void setExperience(ReferenceValue experience) {
+        this.experience = experience;
+    }
 
     public String getLastName() {
         return lastName;

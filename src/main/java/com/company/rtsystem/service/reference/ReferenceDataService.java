@@ -36,7 +36,6 @@ public class ReferenceDataService {
         dataManager.save(value);
     }
 
-
     public Map<ReferenceValue, String> getReferenceValues(String tableName, @Nullable ReferenceValue existingValue){
         Map<ReferenceValue, String> valuesMap = new LinkedHashMap<>();
         dataManager.load(ReferenceValue.class)
