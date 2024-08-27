@@ -9,7 +9,9 @@
 
     <property name="offsetDateTime.type" dbms="postgresql" value="timestamp with time zone"/>
     <include file="/io/jmix/data/liquibase/changelog.xml"/>
+    <include file="/io/jmix/email/liquibase/changelog.xml"/>
     <include file="/io/jmix/flowuidata/liquibase/changelog.xml"/>
+    <include file="/io/jmix/notifications/liquibase/changelog.xml"/>
     <include file="/io/jmix/securitydata/liquibase/changelog.xml"/>
     <include file="/io/jmix/bpm/liquibase/changelog.xml"/>
 

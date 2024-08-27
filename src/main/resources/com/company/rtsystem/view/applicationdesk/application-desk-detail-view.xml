@@ -45,6 +45,13 @@
             />
             <entityComboBox itemsContainer="applicationDc" id="applicationDataGrid"
                             property="application"/>
+            <hbox margin="true">
+                <textField id="logoImage" property="resume" dataContainer="applicationDeskDc"
+                       classNames="" visible="false"
+                />
+                <fileStorageUploadField id="resume" property="resume" alignSelf="END" clearButtonAriaLabel="true" fileNameVisible="true"
+                                        uploadIcon="PLUS" colspan="2" acceptedFileTypes=".pdf"/>
+            </hbox>
         </formLayout>
         <!--        <dataGrid id="applicationDataGrid" dataContainer="applicationDc" width="100%" minHeight="20em">-->
         <!--            <columns>-->

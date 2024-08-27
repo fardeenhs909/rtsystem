@@ -1,6 +1,7 @@
 package com.company.rtsystem.entity;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.FileRef;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
@@ -46,6 +47,9 @@ public class ApplicationDesk {
     @Composition
     private Job application;
 
+    @Column(name = "RESUME", length = 1024)
+    private FileRef resume;
+
     @DeletedBy
     @Column(name = "DELETED_BY")
     private String deletedBy;
@@ -61,6 +65,14 @@ public class ApplicationDesk {
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_DATE")
     private OffsetDateTime lastModifiedDate;
+
+    public FileRef getResume() {
+        return resume;
+    }
+
+    public void setResume(FileRef resume) {
+        this.resume = resume;
+    }
 
     public ReferenceValue getExperience() {
         return experience;

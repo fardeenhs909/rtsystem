@@ -29,9 +29,13 @@
     <layout>
         <formLayout id="form" dataContainer="jobDc">
             <textField id="titleField" property="title"/>
-            <textArea id="descField" height="9.5em" property="desc"/>
             <multiSelectComboBox id="skillsDataGrid" itemsContainer="skillsDc"
                             property="skills"/>
+            <textArea id="descField" height="9.5em" property="desc"/>
+            <hbox>
+                <fileStorageUploadField id="jobDescription" alignSelf="END" clearButtonAriaLabel="true" fileNameVisible="true"
+                acceptedFileTypes=".pdf"/>
+            </hbox>
         </formLayout>
 <!--        <dataGrid id="skillsDataGrid" dataContainer="skillsDc" width="100%" minHeight="20em">-->
 <!--            <columns>-->

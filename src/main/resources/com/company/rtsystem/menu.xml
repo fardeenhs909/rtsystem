@@ -31,6 +31,8 @@
                       title="msg://io.jmix.securityflowui.view.resourcerole/resourceRoleModelListView.menu"/>
                 <item view="sec_RowLevelRoleModel.list"
                       title="msg://io.jmix.securityflowui.view.rowlevelrole/rowLevelRoleModelListView.menu"/>
+                <item view="ntf_InAppNotification.list"
+                      title="msg://io.jmix.notificationsflowui/ntf_InAppNotification.list.menu"/>
             </menu>
         </menu>
 
